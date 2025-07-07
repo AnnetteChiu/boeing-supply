@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
   Users,
+  TrendingUp,
 } from 'lucide-react'
 
 import {
@@ -56,6 +57,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   icon={<Users />}
                 >
                   Suppliers
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Link href="/market-trends" passHref legacyBehavior>
+                <SidebarMenuButton
+                  isActive={isActive('/market-trends')}
+                  icon={<TrendingUp />}
+                >
+                  Market Trends
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
