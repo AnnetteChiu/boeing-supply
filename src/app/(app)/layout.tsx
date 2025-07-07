@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  FileText,
   LayoutDashboard,
   Users,
 } from 'lucide-react'
@@ -57,16 +56,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   icon={<Users />}
                 >
                   Suppliers
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Link href="/risk-assessment" passHref legacyBehavior>
-                <SidebarMenuButton
-                  isActive={isActive('/risk-assessment')}
-                  icon={<FileText />}
-                >
-                  Risk Assessment
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
