@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import {
   FileText,
   LayoutDashboard,
-  Network,
   Users,
 } from 'lucide-react'
 
@@ -58,16 +57,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   icon={<Users />}
                 >
                   Suppliers
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-               <Link href="/analysis" passHref legacyBehavior>
-                <SidebarMenuButton
-                  isActive={isActive('/analysis')}
-                  icon={<Network />}
-                >
-                  AI Analysis
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
