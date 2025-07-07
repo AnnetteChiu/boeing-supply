@@ -39,6 +39,8 @@ const prompt = ai.definePrompt({
 
   Analyze the following TSMC and Boeing supply chain data to identify key relationships, dependencies, and potential vulnerabilities. Provide a detailed analysis of your findings, focusing on critical areas for both companies.
 
+  Format your response as a JSON object with a single key "analysisResults", where the value is your detailed analysis as a string.
+
   Supply Chain Data:
   {{{supplyChainData}}}`,
 });
