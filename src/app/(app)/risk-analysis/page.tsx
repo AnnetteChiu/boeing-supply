@@ -1,3 +1,4 @@
+
 'use client'
 
 import * as React from 'react'
@@ -138,7 +139,7 @@ export default function RiskAnalysisPage() {
               </div>
             )}
           </CardContent>
-        </card>
+        </Card>
       </div>
     </div>
   )
