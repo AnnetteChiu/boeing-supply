@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Users,
   TrendingUp,
+  ShieldAlert,
 } from 'lucide-react'
 
 import {
@@ -67,6 +68,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   icon={<TrendingUp />}
                 >
                   Market Trends
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Link href="/risk-analysis" passHref legacyBehavior>
+                <SidebarMenuButton
+                  isActive={isActive('/risk-analysis')}
+                  icon={<ShieldAlert />}
+                >
+                  Risk Analysis
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>

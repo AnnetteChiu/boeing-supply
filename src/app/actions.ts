@@ -1,6 +1,8 @@
 'use server'
 
 import { predictTrends } from '@/ai/flows/predict-trends-flow';
+import { analyzeRisks } from '@/ai/flows/risk-analysis-flow';
+import type { RiskAnalysisOutput } from '@/ai/schemas';
 
 type PredictionState = {
   prediction: string | null;
@@ -23,5 +25,29 @@ export async function predictMarketTrends(
   } catch (e: any) {
     console.error(e);
     return { prediction: null, error: 'Failed to generate prediction. Please try again.' };
+  }
+}
+
+type RiskAnalysisState = {
+  report: RiskAnalysisOutput | null;
+  error: string | null;
+};
+
+export async function runRiskAnalysis(
+  prevState: RiskAnalysisState,
+  formData: FormData
+): Promise<RiskAnalysisState> {
+  const context = formData.get('context') as string;
+
+  if (!context) {
+    return { report: null, error: 'Please provide some context for the analysis.' };
+  }
+
+  try {
+    const result = await analyzeRisks({ context });
+    return { report: result, error: null };
+  } catch (e: any) {
+    console.error(e);
+    return { report: null, error: 'Failed to run risk analysis. Please try again.' };
   }
 }
