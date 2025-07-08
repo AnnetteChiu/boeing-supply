@@ -29,3 +29,19 @@ export const RiskAnalysisOutputSchema = z.object({
   mitigations: z.array(z.string()).describe('A list of suggested strategies to mitigate the identified risks.'),
 });
 export type RiskAnalysisOutput = z.infer<typeof RiskAnalysisOutputSchema>;
+
+export const CostAnalysisInputSchema = z.object({
+  context: z.string().describe('User-provided context about components, suppliers, and logistics for cost analysis.'),
+});
+export type CostAnalysisInput = z.infer<typeof CostAnalysisInputSchema>;
+
+export const CostAnalysisOutputSchema = z.object({
+  summary: z.string().describe('A high-level summary of the cost analysis.'),
+  costBreakdown: z.array(z.object({
+    item: z.string().describe('The specific cost item being analyzed (e.g., raw materials, labor, shipping).'),
+    cost: z.number().describe('The estimated cost for the item in USD.'),
+    impact: z.string().describe('A brief description of the factors influencing this cost.')
+  })).describe('A detailed breakdown of various cost components.'),
+  recommendations: z.array(z.string()).describe('A list of suggested strategies for cost optimization.'),
+});
+export type CostAnalysisOutput = z.infer<typeof CostAnalysisOutputSchema>;

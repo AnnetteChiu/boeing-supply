@@ -2,7 +2,8 @@
 
 import { predictTrends } from '@/ai/flows/predict-trends-flow';
 import { analyzeRisks } from '@/ai/flows/risk-analysis-flow';
-import type { RiskAnalysisOutput } from '@/ai/schemas';
+import { analyzeCosts } from '@/ai/flows/cost-analysis-flow';
+import type { RiskAnalysisOutput, CostAnalysisOutput } from '@/ai/schemas';
 
 type PredictionState = {
   prediction: string | null;
@@ -49,5 +50,29 @@ export async function runRiskAnalysis(
   } catch (e: any) {
     console.error(e);
     return { report: null, error: 'Failed to run risk analysis. Please try again.' };
+  }
+}
+
+type CostAnalysisState = {
+  report: CostAnalysisOutput | null;
+  error: string | null;
+};
+
+export async function runCostAnalysis(
+  prevState: CostAnalysisState,
+  formData: FormData
+): Promise<CostAnalysisState> {
+  const context = formData.get('context') as string;
+
+  if (!context) {
+    return { report: null, error: 'Please provide some context for the analysis.' };
+  }
+
+  try {
+    const result = await analyzeCosts({ context });
+    return { report: result, error: null };
+  } catch (e: any) {
+    console.error(e);
+    return { report: null, error: 'Failed to run cost analysis. Please try again.' };
   }
 }

@@ -101,3 +101,8 @@ export const defaultMarketTrends = `1. Increased demand for fuel-efficient aircr
 export const defaultGeopoliticalFactors = `1. Trade tariffs between major economic blocs.
 2. Political instability in key resource-rich regions.
 3. Stricter international environmental regulations on aviation.`
+
+export const defaultCostFactors = `1. Raw Material: Titanium prices have increased by 8% in the last quarter.
+2. Labor Costs: Skilled labor wages in Wichita, USA have gone up by 3%.
+3. Logistics: Shipping costs from Asia have increased by 15% due to port congestion.
+4. Energy: Electricity costs for manufacturing plants are up 5%.`
