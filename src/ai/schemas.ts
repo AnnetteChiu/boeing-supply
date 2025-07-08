@@ -45,3 +45,18 @@ export const CostAnalysisOutputSchema = z.object({
   recommendations: z.array(z.string()).describe('A list of suggested strategies for cost optimization.'),
 });
 export type CostAnalysisOutput = z.infer<typeof CostAnalysisOutputSchema>;
+
+export const GeoAnalysisInputSchema = z.object({
+  context: z.string().describe('User-provided context about suppliers, routes, or regions for geopolitical analysis.'),
+});
+export type GeoAnalysisInput = z.infer<typeof GeoAnalysisInputSchema>;
+
+export const GeoAnalysisOutputSchema = z.object({
+  locations: z.array(z.object({
+    name: z.string().describe('The name of the identified geographic location (e.g., country, city, region).'),
+    latitude: z.number().describe('The latitude of the location.'),
+    longitude: z.number().describe('The longitude of the location.'),
+    summary: z.string().describe('A brief summary of the geopolitical significance or risks for the supply chain at this location.'),
+  })).describe('A list of identified geographic locations with their analysis.'),
+});
+export type GeoAnalysisOutput = z.infer<typeof GeoAnalysisOutputSchema>;

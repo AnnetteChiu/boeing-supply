@@ -106,3 +106,8 @@ export const defaultCostFactors = `1. Raw Material: Titanium prices have increas
 2. Labor Costs: Skilled labor wages in Wichita, USA have gone up by 3%.
 3. Logistics: Shipping costs from Asia have increased by 15% due to port congestion.
 4. Energy: Electricity costs for manufacturing plants are up 5%.`
+
+export const defaultGeoFactors = `1. Key supplier 'AeroStructures Inc.' is based in Wichita, USA.
+2. Shipping routes pass through the South China Sea.
+3. A new manufacturing plant is being considered in either Poland or Vietnam.
+4. Raw materials like cobalt are sourced from the Democratic Republic of Congo.`

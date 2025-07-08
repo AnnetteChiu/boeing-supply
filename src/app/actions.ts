@@ -3,7 +3,8 @@
 import { predictTrends } from '@/ai/flows/predict-trends-flow';
 import { analyzeRisks } from '@/ai/flows/risk-analysis-flow';
 import { analyzeCosts } from '@/ai/flows/cost-analysis-flow';
-import type { RiskAnalysisOutput, CostAnalysisOutput } from '@/ai/schemas';
+import { analyzeGeoLocations } from '@/ai/flows/geo-analysis-flow';
+import type { RiskAnalysisOutput, CostAnalysisOutput, GeoAnalysisOutput } from '@/ai/schemas';
 
 type PredictionState = {
   prediction: string | null;
@@ -74,5 +75,29 @@ export async function runCostAnalysis(
   } catch (e: any) {
     console.error(e);
     return { report: null, error: 'Failed to run cost analysis. Please try again.' };
+  }
+}
+
+type GeoAnalysisState = {
+  report: GeoAnalysisOutput | null;
+  error: string | null;
+};
+
+export async function runGeoAnalysis(
+  prevState: GeoAnalysisState,
+  formData: FormData
+): Promise<GeoAnalysisState> {
+  const context = formData.get('context') as string;
+
+  if (!context) {
+    return { report: null, error: 'Please provide some context for the analysis.' };
+  }
+
+  try {
+    const result = await analyzeGeoLocations({ context });
+    return { report: result, error: null };
+  } catch (e: any) {
+    console.error(e);
+    return { report: null, error: 'Failed to run geo-location analysis. Please try again.' };
   }
 }

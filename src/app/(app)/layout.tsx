@@ -8,6 +8,7 @@ import {
   TrendingUp,
   ShieldAlert,
   DollarSign,
+  Globe,
 } from 'lucide-react'
 
 import {
@@ -89,6 +90,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   icon={<DollarSign />}
                 >
                   Cost Analysis
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Link href="/geo-locations" passHref legacyBehavior>
+                <SidebarMenuButton
+                  isActive={isActive('/geo-locations')}
+                  icon={<Globe />}
+                >
+                  Geo Locations
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
